@@ -84,6 +84,8 @@ class StandardArgTree(ArgGroupNode):
     a flag than a new flag parser is pushed onto the stack.
     """
 
+    # NOTE(josh): we will pop things off this list, so let's make a copy
+    pargspecs = list(pargspecs)
     tree = cls()
 
     # If it is a whitespace token then put it directly in the parse tree at
@@ -103,6 +105,7 @@ class StandardArgTree(ArgGroupNode):
     all_flags = list(default_spec.flags)
     for pspec in pargspecs:
       all_flags.extend(pspec.flags)
+
     kwarg_breakstack = breakstack + [
         KwargBreaker(list(kwargs.keys()) + all_flags)]
 
@@ -180,7 +183,6 @@ class StandardArgTree(ArgGroupNode):
     a keyword then the keyword parser is pushed on the parse stack. If it was
     a flag than a new flag parser is pushed onto the stack.
     """
-
     if isinstance(npargs, IMPLICIT_PARG_TYPES):
       pargspecs = [PositionalSpec(npargs, flags=flags, legacy=True)]
     else:
