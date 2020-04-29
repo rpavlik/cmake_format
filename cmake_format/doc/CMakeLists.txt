@@ -341,8 +341,10 @@ add_custom_target(
 add_dependencies(doc doc-cmake_format)
 set_property(GLOBAL APPEND PROPERTY global_doc_files ${_sphinx_manifest})
 
-set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
-                                       ${_copyfiles} ${_genbits})
+set_property(
+  DIRECTORY
+  APPEND
+  PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${_copyfiles} ${_genbits})
 
 add_custom_target(
   push-cmake_format-github-pseudorelease-tag
