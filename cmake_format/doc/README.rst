@@ -407,7 +407,7 @@ Developers
 If you want to hack on ``cmake-format``, please see the `documentation`__ for
 contribution rules and guidelines.
 
-.. __: https://cmake-format.rtfd.io/en/latest/contributing.html
+.. __: https://cmake-format.readthedocs.io/en/latest/contributing.html
 
 -------
 Example
